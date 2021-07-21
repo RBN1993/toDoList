@@ -3,7 +3,10 @@ import ToDoList from './components/ToDoList/ToDoList.component'
 import InputForm from './components/InputForm/Form.component'
 import './App.css'
 import 'antd/dist/antd.css'
+import useToDoList from 'core/hook'
+
 const App: FC = () => {
+  const { taskList, handleToggle, handleAdd, handleRemove } = useToDoList()
   return (
     <div className='app'>
       <div className='header'>
@@ -14,18 +17,9 @@ const App: FC = () => {
       </div>
       <div className='todo-list'>
         <ToDoList
-          dataSource={[
-            {
-              id: '1',
-              value:
-                'Esto es una prueba larga Esto es una prueba larga Esto es una prueba larga'
-            },
-            { id: '1', value: 'Task1' },
-            { id: '1', value: 'Recoger a Alina' },
-            { id: '1', value: 'HOla' }
-          ]}
-          onCheck={() => {}}
-          onRemove={() => {}}
+          dataSource={taskList}
+          onCheck={handleToggle}
+          onRemove={handleRemove}
         />
       </div>
     </div>

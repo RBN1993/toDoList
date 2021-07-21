@@ -12,7 +12,7 @@ type AddTaskAction = {
   type: ActionTypes.TASK_ADDED
   payload: string
 }
-export function addTask(textContent: string): AddTaskAction {
+export function addTaskWithCurrentValue(textContent: string): AddTaskAction {
   return {
     type: ActionTypes.TASK_ADDED,
     payload: textContent

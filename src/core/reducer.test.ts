@@ -1,5 +1,11 @@
 import reducer, { InitialState, State } from './reducer'
-import { Actions, addTask, loadList, removeTask, toggleTask } from './actions'
+import {
+  Actions,
+  addTaskWithCurrentValue,
+  loadList,
+  removeTask,
+  toggleTask
+} from './actions'
 import { Task } from 'types/Task.model'
 
 const executeActions = (
@@ -14,15 +20,15 @@ describe('Reducer', () => {
   ]
   describe('TASK_ADDED', () => {
     test('returns state with one task added to toDoList', () => {
-      const result = executeActions([addTask('Add this task')])
+      const result = executeActions([addTaskWithCurrentValue('Add this task')])
       expect(result.taskList[0].id).toBeDefined()
       expect(result.taskList[0].value).toBe('Add this task')
       expect(result.taskList[0].checked).toBeUndefined()
     })
     test('returns state with two tasks added to toDoList', () => {
       const [task1, task2] = executeActions([
-        addTask('Add this task'),
-        addTask('Add this task2')
+        addTaskWithCurrentValue('Add this task'),
+        addTaskWithCurrentValue('Add this task2')
       ]).taskList
       expect(task1.id).toBeDefined()
       expect(task1.value).toBe('Add this task')
