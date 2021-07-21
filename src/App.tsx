@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React, { FC } from 'react'
+import ToDoList from './components/ToDoList/ToDoList.component'
+import InputForm from './components/InputForm/Form.component'
+import './App.css'
+import 'antd/dist/antd.css'
+const App: FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      <div className='header'>
+        <h1>To Do List</h1>
+      </div>
+      <div className='input-form'>
+        <InputForm value='a' onChange={() => {}} onFinish={() => {}} />
+      </div>
+      <div className='todo-list'>
+        <ToDoList
+          dataSource={[
+            {
+              id: '1',
+              value:
+                'Esto es una prueba larga Esto es una prueba larga Esto es una prueba larga'
+            },
+            { id: '1', value: 'Task1' },
+            { id: '1', value: 'Recoger a Alina' },
+            { id: '1', value: 'HOla' }
+          ]}
+          onCheck={() => {}}
+          onRemove={() => {}}
+        />
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,0 +1,23 @@
+.wrapper {
+  margin: 10px;
+  height: 100px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 3fr 1fr;
+}
+
+.text_value {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.checkbox,
+.text_value,
+.button {
+  align-self: center;
+  justify-self: center;
+}

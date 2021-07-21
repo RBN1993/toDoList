@@ -1,38 +1,59 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+body {
+  font-family: 'Gloria Hallelujah', cursive !important;
+  background-image: linear-gradient(
+    to left bottom,
+    #00ccf9,
+    #00d0e8,
+    #00d2d1,
+    #37d3b7,
+    #00b1ff,
+    #00bffe,
+    #00ccf9,
+    #00d0e8,
+    #00d2d1,
+    #37d3b7,
+    #67c982,
+    #93b950,
+    #bca42a,
+    #e18728
+  );
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+span {
+  color: #fff;
+  font-size: 1.5em;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.app {
+  display: grid;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    'header header header'
+    'form form form'
+    'list list list';
 }
 
-.App-link {
-  color: #61dafb;
+.header {
+  grid-area: header;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header h1 {
+  margin: 0;
+  font-size: 3.2em;
+  color: #fff;
+  font-weight: 900;
+  text-shadow: 2px 1px #000;
+  text-decoration-line: line-through;
+  text-decoration-color: #e18728;
+}
+.input-form {
+  grid-area: form;
+  margin: 0 auto;
+}
+.todo-list {
+  grid-area: list;
+  text-align: center;
 }

@@ -1,0 +1,17 @@
+.button {
+  animation: touch-me 3s ease-out;
+}
+
+@keyframes touch-me {
+  0% {
+    background-color: #00bffe;
+  }
+
+  50% {
+    background-color: (#40a9ff);
+  }
+
+  100% {
+    background-color: (#40a9ff);
+  }
+}
