@@ -1,31 +1,42 @@
-import React, { ChangeEventHandler, FC } from 'react'
+import React, { ChangeEvent, FC, useCallback, useState } from 'react'
 import { Button, Form, Input } from 'antd'
 import { PlusCircleOutlined } from '@ant-design/icons'
 import styles from './Form.module.css'
 
 interface InputFormProps {
-  value: string
-  onChange: ChangeEventHandler<HTMLInputElement>
-  onFinish: () => void
+  onFinish: (textValue: string) => void
 }
 
-const InputForm: FC<InputFormProps> = ({ value = '', onChange, onFinish }) => {
+const InputForm: FC<InputFormProps> = ({ onFinish }) => {
+  const [text, setText] = useState('')
+  const handleSubmit = useCallback(() => {
+    onFinish(text)
+    setText('')
+  }, [onFinish, text])
+  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value)
+  }, [])
   return (
-    <div className=''>
-      <Form name='custom-form' layout='inline' onFinish={onFinish}>
-        <Form.Item name='task'>
-          <Input value={value} onChange={onChange} />
-        </Form.Item>
-        <Form.Item>
-          <Button
-            className={styles.button}
-            type='primary'
-            htmlType='submit'
-            icon={<PlusCircleOutlined />}
-          />
-        </Form.Item>
-      </Form>
-    </div>
+    <Form name='custom-form' layout='inline'>
+      <Form.Item>
+        <Input
+          placeholder='Añade una tarea'
+          size='large'
+          value={text}
+          onChange={handleChange}
+          allowClear
+        />
+      </Form.Item>
+      <Form.Item>
+        <Button
+          disabled={!text}
+          className={styles.button}
+          type='primary'
+          icon={<PlusCircleOutlined />}
+          onClick={handleSubmit}
+        />
+      </Form.Item>
+    </Form>
   )
 }
 

@@ -4,7 +4,8 @@ export enum ActionTypes {
   TASK_ADDED = 'TASK_ADDED',
   TASK_REMOVED = 'TASK_REMOVED',
   LIST_LOADED = 'LIST_LOADED',
-  TOGGLE_TASK = 'TOGGLE_TASK'
+  TOGGLE_TASK = 'TOGGLE_TASK',
+  TASK_RECOVERED = 'TASK_RECOVERED'
 }
 
 type AddTaskAction = {
@@ -50,8 +51,18 @@ export function toggleTask(id: string): ToggleTaskAction {
   return { type: ActionTypes.TOGGLE_TASK, payload: id }
 }
 
+type TaskRecoveredAction = {
+  type: ActionTypes.TASK_RECOVERED
+  payload: Task
+}
+
+export function storeTaskInState(task: Task): TaskRecoveredAction {
+  return { type: ActionTypes.TASK_RECOVERED, payload: task }
+}
+
 export type Actions =
   | AddTaskAction
   | RemoveTaskAction
   | LoadListAction
   | ToggleTaskAction
+  | TaskRecoveredAction

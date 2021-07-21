@@ -54,6 +54,10 @@ export default function reducer(state: State, action: Actions): State {
       }
     }
 
+    case ActionTypes.TASK_RECOVERED: {
+      return R.over(R.lensProp('taskList'), R.append(action.payload), state)
+    }
+
     default: {
       console.warn('Unknown action')
       return state

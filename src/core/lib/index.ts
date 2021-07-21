@@ -12,7 +12,8 @@ export function persistLastTask(task: Task) {
 }
 
 export function recoverLastTask(): Task {
-  return JSON.parse(localStorage.getItem(LAST_TASK_REMOVED) || '')
+  const task = localStorage.getItem(LAST_TASK_REMOVED)
+  return task ? JSON.parse(task) : null
 }
 
 export function persistTaskList(taskList: Task[]) {
@@ -22,4 +23,11 @@ export function persistTaskList(taskList: Task[]) {
 export function recoverTaskList() {
   const taskList = localStorage.getItem(FULL_TASK_LIST)
   if (taskList) return JSON.parse(taskList)
+}
+
+export function clearLastTaskRecovered() {
+  localStorage.setItem(LAST_TASK_REMOVED, '')
+}
+export function clearAllTasksStored() {
+  localStorage.setItem(FULL_TASK_LIST, '')
 }

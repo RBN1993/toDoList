@@ -21,7 +21,7 @@ const App: FC = () => {
         <h1>To Do List</h1>
       </div>
       <div className='input-form'>
-        <InputForm value='a' onChange={() => {}} onFinish={() => {}} />
+        <InputForm onFinish={handleAdd} />
       </div>
       <div className='todo-list'>
         <ToDoList
