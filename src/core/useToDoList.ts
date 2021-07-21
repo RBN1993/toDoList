@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer } from 'react'
+import { useCallback, useEffect, useMemo, useReducer } from 'react'
 import { isEmpty } from 'ramda'
 import reducer, { InitialState } from './reducer'
 import * as Actions from './actions'
@@ -40,6 +40,24 @@ export default function useToDoList() {
     dispatch(Actions.loadList([]))
     clearAllTasksStored()
   }, [])
+  const clasifiedTasks = useMemo(() => {
+    const completedTasks = taskList.filter(task => task.checked).length
+    const incompletedTasks = taskList.filter(task => !task.checked).length
+    return {
+      completed: {
+        percent: Array.isArray(taskList)
+          ? (completedTasks / taskList.length) * 100
+          : 0,
+        length: completedTasks
+      },
+      incompleted: {
+        percent: Array.isArray(taskList)
+          ? (incompletedTasks / taskList.length) * 100
+          : 0,
+        length: incompletedTasks
+      }
+    }
+  }, [taskList])
   return {
     taskList,
     handleToggle: (id: string) => dispatch(Actions.toggleTask(id)),
@@ -48,6 +66,7 @@ export default function useToDoList() {
     handleRemove: (id: string) => dispatch(Actions.removeTask(id)),
     handleSaveTaskList,
     handleUndo,
-    handleRemoveAll
+    handleRemoveAll,
+    clasifiedTasks
   }
 }

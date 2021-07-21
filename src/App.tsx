@@ -4,6 +4,7 @@ import InputForm from './components/InputForm/Form.component'
 import './App.css'
 import 'antd/dist/antd.css'
 import useToDoList from 'core/useToDoList'
+import { Progress } from 'antd'
 
 const App: FC = () => {
   const {
@@ -13,12 +14,26 @@ const App: FC = () => {
     handleRemove,
     handleSaveTaskList,
     handleUndo,
-    handleRemoveAll
+    handleRemoveAll,
+    clasifiedTasks
   } = useToDoList()
   return (
     <div className='app'>
       <div className='header'>
+        <div className='progress'>
+          Completado: {clasifiedTasks.completed.length}/{taskList.length}
+          <Progress
+            percent={clasifiedTasks.completed.percent}
+            status='active'
+          />
+          <Progress
+            percent={clasifiedTasks.incompleted.percent}
+            status='exception'
+          />
+        </div>
+
         <h1>To Do List</h1>
+        <div></div>
       </div>
       <div className='input-form'>
         <InputForm onFinish={handleAdd} />
