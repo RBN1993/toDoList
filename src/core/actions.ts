@@ -4,8 +4,7 @@ export enum ActionTypes {
   TASK_ADDED = 'TASK_ADDED',
   TASK_REMOVED = 'TASK_REMOVED',
   LIST_LOADED = 'LIST_LOADED',
-  TOGGLE_TASK = 'TOGGLE_TASK',
-  SAVE_ALL = 'SAVE_ALL'
+  TOGGLE_TASK = 'TOGGLE_TASK'
 }
 
 type AddTaskAction = {

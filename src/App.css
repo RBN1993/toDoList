@@ -19,10 +19,7 @@ body {
     #e18728
   );
 }
-span {
-  color: #fff;
-  font-size: 1.5em;
-}
+
 .app {
   display: grid;
   justify-content: center;

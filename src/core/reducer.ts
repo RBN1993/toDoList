@@ -5,12 +5,10 @@ import * as R from 'ramda'
 
 export type State = {
   taskList: Task[]
-  textFilter: string
 }
 
 export const InitialState: State = {
-  taskList: [],
-  textFilter: ''
+  taskList: []
 }
 
 function getTaskToPersist(id: string, taskList: Task[]) {

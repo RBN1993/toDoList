@@ -41,8 +41,7 @@ describe('Reducer', () => {
   describe('LIST_LOADED', () => {
     test('stores tasks directly in state', () => {
       expect(executeActions([loadList(mockedList)])).toStrictEqual({
-        taskList: mockedList,
-        textFilter: ''
+        taskList: mockedList
       })
     })
   })
@@ -52,8 +51,7 @@ describe('Reducer', () => {
       expect(
         executeActions([loadList(mockedList), removeTask('2')])
       ).toStrictEqual({
-        taskList: [mockedList[0]],
-        textFilter: ''
+        taskList: [mockedList[0]]
       })
     })
   })
@@ -65,8 +63,7 @@ describe('Reducer', () => {
         taskList: [
           { id: '1', value: 'Content1', checked: false },
           { id: '2', value: 'Content2' }
-        ],
-        textFilter: ''
+        ]
       })
     })
     test('toggle all tasks', () => {
@@ -76,8 +73,7 @@ describe('Reducer', () => {
         taskList: [
           { id: '1', value: 'Content1', checked: false },
           { id: '2', value: 'Content2', checked: true }
-        ],
-        textFilter: ''
+        ]
       })
     })
   })
